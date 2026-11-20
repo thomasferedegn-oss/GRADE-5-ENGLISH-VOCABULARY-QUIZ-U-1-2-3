@@ -1,0 +1,1665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>YT Tutorial Center for Kids – Grade 5 Vocabulary Interactive Quiz</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Inter & Noto Sans Ethiopic for crisp Amharic rendering -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Ethiopic:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'Noto Sans Ethiopic', 'sans-serif'],
+            amharic: ['Noto Sans Ethiopic', 'Inter', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans min-h-screen flex flex-col antialiased selection:bg-indigo-100 selection:text-indigo-900">
+
+  <!-- ==================== TOP NAVIGATION & BRAND HEADER ==================== -->
+  <header class="bg-gradient-to-r from-indigo-900 via-blue-900 to-indigo-800 text-white shadow-lg sticky top-0 z-40">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3">
+      <!-- Brand Logo & Name -->
+      <div class="flex items-center gap-3">
+        <!-- Custom Inline SVG Logo for YT Tutorial Center for Kids -->
+        <div class="w-11 h-11 rounded-full bg-white p-1 shadow-md flex items-center justify-center shrink-0 ring-2 ring-amber-400">
+          <svg viewBox="0 0 64 64" class="w-full h-full" aria-label="YT Tutorial Center Logo">
+            <circle cx="32" cy="32" r="30" fill="#1d4ed8" />
+            <circle cx="32" cy="32" r="26" fill="none" stroke="#facc15" stroke-width="2.5" stroke-dasharray="6 3" />
+            <rect x="18" y="24" width="28" height="19" rx="5" fill="#ef4444" />
+            <polygon points="29,29 29,38 38,33.5" fill="#ffffff" />
+            <path d="M19 20 L32 13 L45 20 L32 25 Z" fill="#1e293b" />
+            <line x1="45" y1="20" x2="45" y2="27" stroke="#facc15" stroke-width="2" />
+            <circle cx="45" cy="28" r="2" fill="#facc15" />
+            <text x="32" y="54" text-anchor="middle" fill="#fef08a" font-size="9" font-weight="800" font-family="Inter, sans-serif">YT KIDS</text>
+          </svg>
+        </div>
+        <div>
+          <h1 class="text-base sm:text-lg font-extrabold tracking-tight leading-tight">YT TUTORIAL CENTER FOR KIDS</h1>
+          <p class="text-xs text-blue-200 font-medium">Grade 5 English Vocabulary (Units 1–3) &bull; Contact: 0967029123</p>
+        </div>
+      </div>
+
+      <!-- View Switcher & Narrator Quick Status -->
+      <div class="flex items-center gap-2">
+        <button id="navQuizBtn" type="button" onclick="switchMainView('quiz')" class="px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-white text-indigo-900 shadow-sm hover:bg-blue-50 transition">
+          Student Quiz
+        </button>
+        <button id="navTeacherBtn" type="button" onclick="switchMainView('teacher')" class="px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-indigo-700/80 text-white border border-indigo-400/40 hover:bg-indigo-600 transition flex items-center gap-1.5">
+          <span>Teacher Dashboard</span>
+          <span id="dashboardCountBadge" class="bg-amber-400 text-indigo-950 text-xs font-bold px-1.5 py-0.5 rounded-full">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== TOAST NOTIFICATION BANNER ==================== -->
+  <div id="toastContainer" class="fixed bottom-5 right-5 z-50 flex flex-col gap-2 max-w-sm w-full px-4 pointer-events-none"></div>
+
+  <!-- ==================== MAIN CONTENT AREA ==================== -->
+  <main class="flex-1 max-w-5xl w-full mx-auto px-4 sm:px-6 py-6 sm:py-8">
+
+    <!-- ==================== VIEW 1: WELCOME / IDENTIFICATION SCREEN ==================== -->
+    <section id="welcomeScreen" class="max-w-2xl mx-auto">
+      <div class="bg-white rounded-3xl shadow-xl border border-slate-200/80 overflow-hidden">
+        <!-- Hero Banner -->
+        <div class="bg-gradient-to-br from-indigo-600 via-blue-600 to-sky-500 p-6 sm:p-8 text-white">
+          <div class="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-semibold mb-3">
+            <span>Units 1, 2 &amp; 3 Comprehensive Assessment</span>
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight mb-2">Grade 5 Vocabulary Interactive Quiz</h2>
+          <p class="text-blue-100 text-sm sm:text-base leading-relaxed">
+            Test your mastery of 60 key vocabulary words from <strong>Holidays</strong>, <strong>Dry Season</strong>, and <strong>Accidents</strong>. Enjoy instant feedback, bilingual English &amp; Amharic explanations, and a British English female voice narrator.
+          </p>
+        </div>
+
+        <!-- Feature Highlights -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 p-5 bg-slate-50 border-b border-slate-200/70 text-center">
+          <div class="bg-white rounded-2xl p-3 shadow-sm border border-slate-100">
+            <div class="text-xl font-extrabold text-indigo-600">60</div>
+            <div class="text-xs text-slate-500 font-medium">Total Items</div>
+          </div>
+          <div class="bg-white rounded-2xl p-3 shadow-sm border border-slate-100">
+            <div class="text-xl font-extrabold text-emerald-600">EN + አማ</div>
+            <div class="text-xs text-slate-500 font-medium">Explanations</div>
+          </div>
+          <div class="bg-white rounded-2xl p-3 shadow-sm border border-slate-100">
+            <div class="text-xl font-extrabold text-amber-500">Locked</div>
+            <div class="text-xs text-slate-500 font-medium">Instant Check</div>
+          </div>
+          <div class="bg-white rounded-2xl p-3 shadow-sm border border-slate-100">
+            <div class="text-xl font-extrabold text-sky-600">UK Voice</div>
+            <div class="text-xs text-slate-500 font-medium">Audio Narrator</div>
+          </div>
+        </div>
+
+        <!-- Student Identification Form -->
+        <form id="studentForm" onsubmit="handleStartQuiz(event)" class="p-6 sm:p-8 space-y-5">
+          <div>
+            <h3 class="text-lg font-bold text-slate-800 mb-1">Student Identification</h3>
+            <p class="text-sm text-slate-500">Please enter your details accurately before starting the quiz.</p>
+          </div>
+
+          <div id="formErrorBox" class="hidden rounded-2xl bg-red-50 border border-red-200 text-red-700 px-4 py-3 text-sm font-medium"></div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label for="studentName" class="block text-sm font-semibold text-slate-700 mb-1.5">Full Name <span class="text-red-500">*</span></label>
+              <input id="studentName" type="text" placeholder="e.g., Abebe Kebede" autocomplete="name"
+                class="w-full px-4 py-3 rounded-2xl border border-slate-300 focus:border-indigo-500 focus:ring-4 focus:ring-indigo-100 outline-none text-sm sm:text-base transition" />
+            </div>
+            <div>
+              <label for="studentId" class="block text-sm font-semibold text-slate-700 mb-1.5">ID Number <span class="text-red-500">*</span></label>
+              <input id="studentId" type="text" placeholder="e.g., YT-2026-045"
+                class="w-full px-4 py-3 rounded-2xl border border-slate-300 focus:border-indigo-500 focus:ring-4 focus:ring-indigo-100 outline-none text-sm sm:text-base transition" />
+            </div>
+          </div>
+
+          <div>
+            <label for="studentSection" class="block text-sm font-semibold text-slate-700 mb-1.5">Grade / Section (Optional)</label>
+            <input id="studentSection" type="text" placeholder="e.g., Grade 5A"
+              class="w-full px-4 py-3 rounded-2xl border border-slate-300 focus:border-indigo-500 focus:ring-4 focus:ring-indigo-100 outline-none text-sm sm:text-base transition" />
+          </div>
+
+          <!-- Rules Notice -->
+          <div class="rounded-2xl bg-amber-50 border border-amber-200/80 p-4 text-xs sm:text-sm text-amber-900 space-y-1">
+            <p class="font-bold">Important Quiz Rules:</p>
+            <ul class="list-disc list-inside space-y-0.5 text-amber-800">
+              <li>Once you select an option, your answer is <strong>irreversible (locked)</strong>.</li>
+              <li>Wrong answers immediately highlight in red while revealing the correct answer in green.</li>
+              <li>You may use <strong>Jump Next / Skip</strong> and <strong>Back</strong> to navigate freely before submitting.</li>
+            </ul>
+          </div>
+
+          <button type="submit" class="w-full py-3.5 px-6 rounded-2xl bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-700 hover:to-blue-700 text-white font-bold text-base shadow-lg shadow-indigo-200 hover:shadow-xl transition transform active:scale-[0.99] flex items-center justify-center gap-2">
+            <span>Start Quiz</span>
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- ==================== VIEW 2: ACTIVE QUIZ INTERFACE ==================== -->
+    <section id="quizScreen" class="hidden space-y-5">
+      <!-- Top Student & Progress Strip -->
+      <div class="bg-white rounded-3xl shadow-md border border-slate-200/80 p-4 sm:p-5">
+        <div class="flex flex-wrap items-center justify-between gap-3 mb-3">
+          <div class="flex items-center gap-2.5">
+            <div class="w-10 h-10 rounded-2xl bg-indigo-100 text-indigo-700 font-extrabold flex items-center justify-center text-sm" id="studentInitials">ST</div>
+            <div>
+              <div class="text-sm font-bold text-slate-800" id="displayStudentName">Student Name</div>
+              <div class="text-xs text-slate-500">ID: <span id="displayStudentId" class="font-semibold text-slate-700">---</span></div>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-2">
+            <span class="px-3 py-1.5 rounded-xl bg-emerald-50 text-emerald-700 text-xs font-bold border border-emerald-200">
+              Answered: <span id="answeredCount">0</span>/60
+            </span>
+            <span class="px-3 py-1.5 rounded-xl bg-indigo-50 text-indigo-700 text-xs font-bold border border-indigo-200">
+              Live Score: <span id="liveScore">0</span>
+            </span>
+            <button type="button" onclick="toggleNavigatorModal(true)" class="px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition">
+              Question Map
+            </button>
+          </div>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden">
+          <div id="progressBar" class="bg-gradient-to-r from-indigo-500 via-blue-500 to-emerald-500 h-2.5 rounded-full transition-all duration-300" style="width: 1.67%"></div>
+        </div>
+      </div>
+
+      <!-- Dedicated British Female Narrator Control Bar -->
+      <div class="bg-gradient-to-r from-sky-50 via-indigo-50 to-purple-50 rounded-3xl border border-indigo-200/70 p-3.5 sm:p-4 flex flex-wrap items-center justify-between gap-3 shadow-sm">
+        <div class="flex items-center gap-3">
+          <div id="narratorPulse" class="w-10 h-10 rounded-2xl bg-indigo-600 text-white flex items-center justify-center shadow-sm shrink-0">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+            </svg>
+          </div>
+          <div>
+            <div class="text-xs sm:text-sm font-bold text-indigo-950 flex items-center gap-1.5">
+              <span>British English Female Narrator</span>
+              <span class="px-2 py-0.5 rounded-full bg-indigo-100 text-indigo-700 text-[11px] font-semibold">en-GB</span>
+            </div>
+            <div id="narratorVoiceStatus" class="text-xs text-slate-600">Initializing UK female voice...</div>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-2">
+          <button type="button" onclick="narrateCurrentQuestion()" class="px-3.5 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold shadow-sm transition flex items-center gap-1.5">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" /></svg>
+            <span>Read Question</span>
+          </button>
+          <button type="button" id="readExpBtn" onclick="narrateCurrentExplanation()" class="hidden px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold shadow-sm transition">
+            Read Explanation
+          </button>
+          <button type="button" onclick="stopNarration()" class="px-3 py-2 rounded-xl bg-white hover:bg-slate-100 text-slate-700 border border-slate-200 text-xs font-bold transition">
+            Stop
+          </button>
+          <label class="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-white border border-slate-200 text-xs font-semibold text-slate-700 cursor-pointer select-none">
+            <input id="autoReadToggle" type="checkbox" class="rounded text-indigo-600 focus:ring-indigo-500" />
+            <span>Auto-Read</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Question Card -->
+      <div class="bg-white rounded-3xl shadow-xl border border-slate-200/80 overflow-hidden">
+        <!-- Unit & Question Header -->
+        <div class="px-5 sm:px-7 py-4 bg-slate-50 border-b border-slate-200/80 flex flex-wrap items-center justify-between gap-2">
+          <div class="flex flex-wrap items-center gap-2">
+            <span id="unitBadge" class="px-3 py-1 rounded-full bg-indigo-600 text-white text-xs font-bold">Unit 1: Holidays</span>
+            <span id="typeBadge" class="px-3 py-1 rounded-full bg-amber-100 text-amber-800 text-xs font-bold">Vocabulary Match</span>
+          </div>
+          <span class="text-sm font-extrabold text-slate-600">
+            Question <span id="currentQNum" class="text-indigo-700">1</span> of 60
+          </span>
+        </div>
+
+        <!-- Stem & Clickable Option Buttons -->
+        <div class="p-5 sm:p-7 space-y-5">
+          <h3 id="questionStem" class="text-lg sm:text-xl font-bold text-slate-900 leading-snug">
+            Loading question...
+          </h3>
+
+          <!-- 4 Clickable Option Buttons (2x2 on tablet/desktop, 1 col on small mobile) -->
+          <div id="optionsGrid" class="grid grid-cols-1 sm:grid-cols-2 gap-3.5"></div>
+
+          <!-- Instant Feedback & Bilingual Explanation Box -->
+          <div id="feedbackPanel" class="hidden rounded-2xl border-2 p-4 sm:p-5 space-y-3 transition-all">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <div id="feedbackStatus" class="text-sm sm:text-base font-extrabold flex items-center gap-2"></div>
+              <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-slate-200/80 text-slate-700">Answer Locked (Irreversible)</span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3 pt-1">
+              <!-- English Explanation -->
+              <div class="bg-white/90 rounded-2xl p-3.5 border border-slate-200/80">
+                <div class="text-xs font-extrabold uppercase tracking-wider text-indigo-700 mb-1">English Explanation</div>
+                <p id="explanationEn" class="text-sm text-slate-700 leading-relaxed"></p>
+              </div>
+              <!-- Amharic Explanation -->
+              <div class="bg-white/90 rounded-2xl p-3.5 border border-slate-200/80 font-amharic">
+                <div class="text-xs font-extrabold uppercase tracking-wider text-emerald-700 mb-1">የአማርኛ ማብራሪያ (Amharic)</div>
+                <p id="explanationAm" class="text-sm text-slate-800 leading-relaxed"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Navigation Footer Buttons: Back, Jump Next / Skip, Submit -->
+        <div class="px-5 sm:px-7 py-4 bg-slate-50 border-t border-slate-200/80 flex flex-wrap items-center justify-between gap-3">
+          <button id="backBtn" type="button" onclick="prevQuestion()" class="px-5 py-3 rounded-2xl bg-white hover:bg-slate-100 text-slate-700 border border-slate-300 font-bold text-sm shadow-sm transition disabled:opacity-40 disabled:cursor-not-allowed flex items-center gap-2">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" /></svg>
+            <span>Back</span>
+          </button>
+
+          <div class="flex flex-wrap items-center gap-2.5 ml-auto">
+            <button id="nextSkipBtn" type="button" onclick="nextOrSkipQuestion()" class="px-5 py-3 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm shadow-md shadow-indigo-200 transition flex items-center gap-2">
+              <span id="nextSkipLabel">Jump Next / Skip</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+            </button>
+
+            <button id="submitQuizBtn" type="button" onclick="requestSubmitQuiz()" class="px-6 py-3 rounded-2xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-bold text-sm shadow-md shadow-emerald-200 transition flex items-center gap-2">
+              <span>Submit Quiz</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== VIEW 3: AUTO-GRADED RESULTS SCREEN ==================== -->
+    <section id="resultsScreen" class="hidden space-y-6">
+      <div class="bg-white rounded-3xl shadow-xl border border-slate-200/80 overflow-hidden">
+        <!-- Score Hero -->
+        <div class="bg-gradient-to-r from-indigo-700 via-blue-700 to-emerald-600 p-6 sm:p-8 text-white text-center">
+          <div class="inline-block px-3.5 py-1 rounded-full bg-white/20 text-xs font-bold uppercase tracking-wider mb-2">Quiz Completed &amp; Auto-Graded</div>
+          <h2 class="text-2xl sm:text-3xl font-extrabold mb-1" id="resStudentName">Student Name</h2>
+          <p class="text-blue-100 text-sm mb-5">ID: <span id="resStudentId" class="font-bold"></span> &bull; <span id="resTimestamp"></span></p>
+
+          <div class="inline-flex flex-col sm:flex-row items-center gap-5 bg-white/15 backdrop-blur-md rounded-3xl px-8 py-5 border border-white/20">
+            <div>
+              <div class="text-4xl sm:text-5xl font-black" id="resTotalScore">0 / 60</div>
+              <div class="text-xs uppercase tracking-wider text-blue-100 font-semibold mt-1">Final Score</div>
+            </div>
+            <div class="hidden sm:block w-px h-12 bg-white/30"></div>
+            <div>
+              <div class="text-4xl sm:text-5xl font-black text-amber-300" id="resPercentage">0%</div>
+              <div class="text-xs uppercase tracking-wider text-blue-100 font-semibold mt-1" id="resGradeLabel">Grade</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Unit Breakdown -->
+        <div class="p-6 sm:p-8 space-y-6">
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div class="rounded-2xl bg-indigo-50 border border-indigo-200/70 p-4 text-center">
+              <div class="text-xs font-bold text-indigo-700 uppercase">Unit 1: Holidays</div>
+              <div id="resUnit1" class="text-2xl font-extrabold text-indigo-900 mt-1">0 / 20</div>
+            </div>
+            <div class="rounded-2xl bg-amber-50 border border-amber-200/70 p-4 text-center">
+              <div class="text-xs font-bold text-amber-700 uppercase">Unit 2: Dry Season</div>
+              <div id="resUnit2" class="text-2xl font-extrabold text-amber-900 mt-1">0 / 20</div>
+            </div>
+            <div class="rounded-2xl bg-rose-50 border border-rose-200/70 p-4 text-center">
+              <div class="text-xs font-bold text-rose-700 uppercase">Unit 3: Accidents</div>
+              <div id="resUnit3" class="text-2xl font-extrabold text-rose-900 mt-1">0 / 20</div>
+            </div>
+          </div>
+
+          <!-- Email Submission & Actions -->
+          <div class="rounded-2xl bg-slate-50 border border-slate-200 p-5 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div>
+              <h3 class="font-bold text-slate-800 text-base">Send Score to Teacher</h3>
+              <p class="text-xs sm:text-sm text-slate-600">Email your official result directly to <strong>mesayferedegn2@gmail.com</strong>.</p>
+            </div>
+            <div class="flex flex-wrap items-center gap-2.5 w-full sm:w-auto">
+              <a id="emailScoreLink" href="#" class="flex-1 sm:flex-none text-center px-5 py-3 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm shadow-md transition">
+                Send via Email
+              </a>
+              <button type="button" onclick="copyScoreReport()" class="flex-1 sm:flex-none px-4 py-3 rounded-2xl bg-white hover:bg-slate-100 text-slate-700 border border-slate-300 font-bold text-sm transition">
+                Copy Report
+              </button>
+              <button type="button" onclick="switchMainView('teacher')" class="flex-1 sm:flex-none px-4 py-3 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm transition">
+                Teacher Dashboard
+              </button>
+              <button type="button" onclick="resetForNewStudent()" class="flex-1 sm:flex-none px-4 py-3 rounded-2xl bg-amber-500 hover:bg-amber-600 text-white font-bold text-sm transition">
+                New Student
+              </button>
+            </div>
+          </div>
+
+          <!-- Detailed Question Review -->
+          <div>
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+              <h3 class="text-lg font-extrabold text-slate-800">Detailed Review (All 60 Questions)</h3>
+              <div class="flex gap-1.5">
+                <button type="button" onclick="renderReviewList('all')" class="px-3 py-1.5 rounded-xl bg-slate-200 hover:bg-slate-300 text-slate-800 text-xs font-bold">All</button>
+                <button type="button" onclick="renderReviewList('wrong')" class="px-3 py-1.5 rounded-xl bg-red-100 hover:bg-red-200 text-red-800 text-xs font-bold">Incorrect / Skipped</button>
+                <button type="button" onclick="renderReviewList('correct')" class="px-3 py-1.5 rounded-xl bg-emerald-100 hover:bg-emerald-200 text-emerald-800 text-xs font-bold">Correct</button>
+              </div>
+            </div>
+            <div id="reviewList" class="space-y-3 max-h-[600px] overflow-y-auto pr-1"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== VIEW 4: TEACHER RESULTS DASHBOARD ==================== -->
+    <section id="teacherScreen" class="hidden space-y-6">
+      <div class="bg-white rounded-3xl shadow-xl border border-slate-200/80 overflow-hidden">
+        <div class="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-800 p-6 sm:p-7 text-white flex flex-wrap items-center justify-between gap-4">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-amber-400">Instructor Portal</span>
+            <h2 class="text-2xl font-extrabold mt-0.5">Teacher Results Dashboard</h2>
+            <p class="text-xs sm:text-sm text-slate-300 mt-1">View submitted student scores, unit performance, and export or email reports.</p>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <button type="button" onclick="exportResultsCSV()" class="px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs sm:text-sm font-bold shadow transition">
+              Export CSV
+            </button>
+            <button type="button" onclick="requestClearDashboard()" class="px-4 py-2.5 rounded-xl bg-rose-600/90 hover:bg-rose-700 text-white text-xs sm:text-sm font-bold shadow transition">
+              Clear Records
+            </button>
+          </div>
+        </div>
+
+        <!-- Summary KPI Cards -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 p-6 bg-slate-50 border-b border-slate-200">
+          <div class="bg-white rounded-2xl p-4 border border-slate-200/70 shadow-sm">
+            <div class="text-xs font-semibold text-slate-500 uppercase">Submissions</div>
+            <div id="kpiTotalStudents" class="text-2xl font-extrabold text-indigo-700 mt-1">0</div>
+          </div>
+          <div class="bg-white rounded-2xl p-4 border border-slate-200/70 shadow-sm">
+            <div class="text-xs font-semibold text-slate-500 uppercase">Average Score</div>
+            <div id="kpiAvgScore" class="text-2xl font-extrabold text-emerald-700 mt-1">0%</div>
+          </div>
+          <div class="bg-white rounded-2xl p-4 border border-slate-200/70 shadow-sm">
+            <div class="text-xs font-semibold text-slate-500 uppercase">Highest Score</div>
+            <div id="kpiHighScore" class="text-2xl font-extrabold text-amber-600 mt-1">0 / 60</div>
+          </div>
+          <div class="bg-white rounded-2xl p-4 border border-slate-200/70 shadow-sm">
+            <div class="text-xs font-semibold text-slate-500 uppercase">Pass Rate (&ge;50%)</div>
+            <div id="kpiPassRate" class="text-2xl font-extrabold text-sky-700 mt-1">0%</div>
+          </div>
+        </div>
+
+        <!-- Search & Table -->
+        <div class="p-6 space-y-4">
+          <div class="flex flex-wrap items-center justify-between gap-3">
+            <input id="dashboardSearch" type="text" oninput="renderTeacherDashboard()" placeholder="Search by student name or ID..."
+              class="w-full sm:w-80 px-4 py-2.5 rounded-xl border border-slate-300 focus:border-indigo-500 focus:ring-4 focus:ring-indigo-100 outline-none text-sm" />
+            <div class="text-xs text-slate-500">Teacher Email: <strong class="text-slate-700">mesayferedegn2@gmail.com</strong></div>
+          </div>
+
+          <div class="overflow-x-auto rounded-2xl border border-slate-200">
+            <table class="w-full text-left border-collapse text-sm">
+              <thead>
+                <tr class="bg-slate-100 text-slate-700 text-xs uppercase">
+                  <th class="py-3 px-4 font-bold">#</th>
+                  <th class="py-3 px-4 font-bold">Student Name</th>
+                  <th class="py-3 px-4 font-bold">ID Number</th>
+                  <th class="py-3 px-4 font-bold">Unit 1</th>
+                  <th class="py-3 px-4 font-bold">Unit 2</th>
+                  <th class="py-3 px-4 font-bold">Unit 3</th>
+                  <th class="py-3 px-4 font-bold">Total</th>
+                  <th class="py-3 px-4 font-bold">Date / Time</th>
+                  <th class="py-3 px-4 font-bold text-right">Action</th>
+                </tr>
+              </thead>
+              <tbody id="dashboardTableBody" class="divide-y divide-slate-200 bg-white"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== QUESTION NAVIGATOR MODAL ==================== -->
+  <div id="navigatorModal" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl shadow-2xl max-w-2xl w-full max-h-[85vh] flex flex-col overflow-hidden">
+      <div class="px-6 py-4 bg-slate-50 border-b border-slate-200 flex items-center justify-between">
+        <div>
+          <h3 class="text-lg font-extrabold text-slate-800">Jump to Any Question (1–60)</h3>
+          <p class="text-xs text-slate-500">Green = Correct &bull; Red = Incorrect &bull; White = Unanswered/Skipped</p>
+        </div>
+        <button type="button" onclick="toggleNavigatorModal(false)" class="p-2 rounded-xl hover:bg-slate-200 text-slate-600 font-bold">✕</button>
+      </div>
+      <div id="navigatorGrid" class="p-5 grid grid-cols-6 sm:grid-cols-10 gap-2 overflow-y-auto"></div>
+    </div>
+  </div>
+
+  <!-- ==================== CUSTOM CONFIRMATION MODAL (No alert/confirm) ==================== -->
+  <div id="confirmModal" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl shadow-2xl max-w-md w-full p-6 space-y-4">
+      <h3 id="confirmModalTitle" class="text-lg font-extrabold text-slate-900">Confirm Action</h3>
+      <p id="confirmModalMessage" class="text-sm text-slate-600 leading-relaxed"></p>
+      <div class="flex justify-end gap-2.5 pt-2">
+        <button type="button" onclick="closeConfirmModal()" class="px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-sm">Cancel</button>
+        <button id="confirmModalOkBtn" type="button" class="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm">Confirm</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="bg-white border-t border-slate-200 py-4 text-center text-xs text-slate-500 mt-auto">
+    &copy; 2026 YT Tutorial Center for Kids &bull; Contact: 0967029123 &bull; Teacher Email: mesayferedegn2@gmail.com
+  </footer>
+
+  <!-- ==================== APPLICATION SCRIPT ==================== -->
+  <script>
+    /*************************************************************************
+     * COMPLETE 60-QUESTION DATASET (UNITS 1, 2 & 3)
+     * Every item includes: id, unit, type, stem, options [A,B,C,D], answer (0-3),
+     * expEn (elaborated English explanation), expAm (elaborated Amharic explanation)
+     *************************************************************************/
+    const QUIZ_QUESTIONS = [
+      // ==================== PART I: UNIT 1 – HOLIDAYS (1–20) ====================
+      {
+        id: 1, unit: 1, unitName: "Unit 1: Holidays", type: "Word Meaning Match",
+        stem: "The Ethiopian New Year is celebrated nationwide. The word 'nationwide' means ______.",
+        options: ["in one village", "across the country", "in a small town", "around the world"],
+        answer: 1,
+        expEn: "'Nationwide' means happening or extending throughout an entire nation or across the whole country.",
+        expAm: "«Nationwide» (በሀገር አቀፍ ደረጃ) ማለት በመላው ሀገሪቱ ውስጥ የሚከበር ወይም የሚደረግ ማለት ነው።"
+      },
+      {
+        id: 2, unit: 1, unitName: "Unit 1: Holidays", type: "Context Fill-in",
+        stem: "National heroes like Haile and Derartu ______ Ethiopia wherever they go.",
+        options: ["slaughter", "furnish", "represent", "invade"],
+        answer: 2,
+        expEn: "'Represent' means to act, speak, or stand as a symbol for a country or group.",
+        expAm: "«Represent» (መወከል) ማለት አንድን ሀገር ወይም ቡድን ወክሎ መቅረብና ማስተዋወቅ ማለት ነው።"
+      },
+      {
+        id: 3, unit: 1, unitName: "Unit 1: Holidays", type: "Context Fill-in",
+        stem: "You have worked really hard this term, so you ______ to stand first in the class.",
+        options: ["deserve", "commemorate", "usher", "revolve"],
+        answer: 0,
+        expEn: "'Deserve' means to have earned something good through hard work or good actions.",
+        expAm: "«Deserve» (ይገባሃል / መገባት) ማለት በጠንካራ ሥራ ወይም በመልካም ተግባር ሽልማትን ወይም ስኬትን ማግኘት መቻል ነው።"
+      },
+      {
+        id: 4, unit: 1, unitName: "Unit 1: Holidays", type: "Word Meaning Match",
+        stem: "There are plenty of yellow flowers in our garden. 'Plenty' means ______.",
+        options: ["very few", "none at all", "a lot", "too small"],
+        answer: 2,
+        expEn: "'Plenty' means a large or sufficient amount—synonymous with 'a lot'.",
+        expAm: "«Plenty» (ብዙ / የተትረፈረፈ) ማለት ከበቂ በላይ ወይም እጅግ ብዙ (a lot) ማለት ነው።"
+      },
+      {
+        id: 5, unit: 1, unitName: "Unit 1: Holidays", type: "Context Fill-in",
+        stem: "Food, music, and dance are important ______ of a society's culture.",
+        options: ["utensils", "elements", "torches", "dishes"],
+        answer: 1,
+        expEn: "'Elements' are essential parts or features that make up a whole, such as the features of a culture.",
+        expAm: "«Elements» (መሠረታዊ ክፍሎች / ገጽታዎች) ማለት የአንድን ማኅበረሰብ ባህል የሚገነቡ ዋና ዋና ክፍሎች ናቸው።"
+      },
+      {
+        id: 6, unit: 1, unitName: "Unit 1: Holidays", type: "Context Fill-in",
+        stem: "During holidays, many families buy a sheep or a goat to ______ for the feast.",
+        options: ["slaughter", "represent", "furnish", "deserve"],
+        answer: 0,
+        expEn: "'Slaughter' means to kill an animal for food, especially during traditional holiday celebrations.",
+        expAm: "«Slaughter» (ማረድ) ማለት ለበዓል ምግብ ዝግጅት እንስሳትን (እንደ በግ ወይም ፍየል) ማረድ ማለት ነው።"
+      },
+      {
+        id: 7, unit: 1, unitName: "Unit 1: Holidays", type: "Context Fill-in",
+        stem: "Mothers buy different ______ such as onions, spices, and butter to prepare 'doro wat'.",
+        options: ["households", "traditions", "utensils", "ingredients"],
+        answer: 3,
+        expEn: "'Ingredients' are the individual food items combined together to cook a particular dish.",
+        expAm: "«Ingredients» (ግብዓቶች) ማለት አንድን ምግብ (ለምሳሌ ዶሮ ወጥ) ለማዘጋጀት የሚያገለግሉ እንደ ሽንኩርት፣ ቅመማ ቅመም እና ቅቤ ያሉ ነገሮች ናቸው።"
+      },
+      {
+        id: 8, unit: 1, unitName: "Unit 1: Holidays", type: "Context Fill-in",
+        stem: "Orthodox Christians attend church services and pray to ______ in the New Year.",
+        options: ["slaughter", "usher", "colonise", "furnish"],
+        answer: 1,
+        expEn: "To 'usher in' means to lead into or welcome the beginning of something new, such as the New Year.",
+        expAm: "«Usher in» (መቀበል / መምራት) ማለት አዲሱን ዓመት ወይም አዲስ ጅማሬን በክብር መቀበል ማለት ነው።"
+      },
+      {
+        id: 9, unit: 1, unitName: "Unit 1: Holidays", type: "Context Fill-in",
+        stem: "Each ______ saves money before the holiday to buy food and clothes for the family.",
+        options: ["household", "element", "bunch", "myth"],
+        answer: 0,
+        expEn: "A 'household' refers to a family or group of people living together in one home.",
+        expAm: "«Household» (ቤተሰብ / ቤተ ዘመድ) ማለት በአንድ ቤት ውስጥ አብረው የሚኖሩ የቤተሰብ አባላት ናቸው።"
+      },
+      {
+        id: 10, unit: 1, unitName: "Unit 1: Holidays", type: "Context Fill-in",
+        stem: "Young boys give a ______ of freshly picked yellow flowers called 'Adey Ababa'.",
+        options: ["torch", "dish", "bunch", "card"],
+        answer: 2,
+        expEn: "A 'bunch' is a group of flowers, keys, or grapes held or tied together.",
+        expAm: "«Bunch» (እቅፍ / ጥቅል) ማለት አንድ ላይ የታሰሩ ወይም የተያዙ አበቦች (እቅፍ አበባ) ማለት ነው።"
+      },
+      {
+        id: 11, unit: 1, unitName: "Unit 1: Holidays", type: "Word Meaning Match",
+        stem: "In the context of holidays, the word 'bunch' is closest in meaning to ______.",
+        options: ["bouquet", "garden", "basket", "branch"],
+        answer: 0,
+        expEn: "A 'bouquet' is an arranged bunch of flowers given as a gift during celebrations.",
+        expAm: "በበዓላት አውድ «Bunch» ከ«Bouquet» (እቅፍ አበባ) ጋር ተመሳሳይ ትርጉም አለው።"
+      },
+      {
+        id: 12, unit: 1, unitName: "Unit 1: Holidays", type: "Context Fill-in",
+        stem: "People gather every year to ______ important historical and national holidays.",
+        options: ["furnish", "invade", "deserve", "commemorate"],
+        answer: 3,
+        expEn: "'Commemorate' means to remember and honour an important past event or person with a ceremony.",
+        expAm: "«Commemorate» (መዘከር / ማስታወስ) ማለት ታሪካዊና ሀገራዊ በዓላትን በክብር ማስታወስና ማክበር ነው።"
+      },
+      {
+        id: 13, unit: 1, unitName: "Unit 1: Holidays", type: "Context Fill-in",
+        stem: "A ______ comes once every four years when Pagume has six days.",
+        options: ["rainy season", "leap year", "public day", "new month"],
+        answer: 1,
+        expEn: "A 'leap year' occurs every four years and has an extra day—in Ethiopia, Pagume has 6 days instead of 5.",
+        expAm: "«Leap year» (ዘመነ ዮሐንስ / የጳጉሜ 6 ቀን ዓመት) በየአራት ዓመቱ አንድ ጊዜ የሚመጣና ጳጉሜ 6 ቀናት የሚኖሩበት ዓመት ነው።"
+      },
+      {
+        id: 14, unit: 1, unitName: "Unit 1: Holidays", type: "Context Fill-in",
+        stem: "Ethiopia maintains its rich ______ because the country has never been colonised.",
+        options: ["utensils", "ingredients", "traditions", "expenses"],
+        answer: 2,
+        expEn: "'Traditions' are long-established customs, beliefs, and practices passed down from generation to generation.",
+        expAm: "«Traditions» (ወጎች / ልማዶች) ማለት ከትውልድ ወደ ትውልድ የተላለፉ የሀገር ባህላዊ ልማዶች ናቸው።"
+      },
+      {
+        id: 15, unit: 1, unitName: "Unit 1: Holidays", type: "Context Fill-in",
+        stem: "New Year celebrations begin on the ______ of Enkutatash, the evening before the day.",
+        options: ["eve", "myth", "feast", "season"],
+        answer: 0,
+        expEn: "The 'eve' of a holiday is the evening or day immediately before the actual holiday.",
+        expAm: "«Eve» (ዋዜማ) ማለት ከዋናው የበዓል ቀን በፊት ያለው ምሽት ወይም ቀን ማለት ነው።"
+      },
+      {
+        id: 16, unit: 1, unitName: "Unit 1: Holidays", type: "Context Fill-in",
+        stem: "Mothers need pots, pans, and other kitchen ______ to cook special holiday meals.",
+        options: ["torches", "festivities", "utensils", "gatherings"],
+        answer: 2,
+        expEn: "Kitchen 'utensils' are tools and containers such as pots, pans, spoons, and knives used for cooking.",
+        expAm: "«Utensils» (የማዕድ ቤት ዕቃዎች) ማለት ምግብ ለማብሰል የምንጠቀምባቸው እንደ ድስት፣ መጥበሻና ማንኪያ ያሉ ዕቃዎች ናቸው።"
+      },
+      {
+        id: 17, unit: 1, unitName: "Unit 1: Holidays", type: "Context Fill-in",
+        stem: "Before the New Year, some families buy new tables and chairs to ______ their homes.",
+        options: ["slaughter", "furnish", "usher", "commemorate"],
+        answer: 1,
+        expEn: "To 'furnish' a home means to supply or decorate it with furniture like tables, chairs, and beds.",
+        expAm: "«Furnish» (ቤት ማሟላት / ማስዋብ) ማለት ቤትን በአዳዲስ ጠረጴዛዎች፣ ወንበሮችና የቤት ዕቃዎች ማደራጀት ማለት ነው።"
+      },
+      {
+        id: 18, unit: 1, unitName: "Unit 1: Holidays", type: "Context Fill-in",
+        stem: "The Ethiopian New Year involves joyful ______ such as singing, dancing, and feasting.",
+        options: ["festivities", "elements", "ingredients", "utensils"],
+        answer: 0,
+        expEn: "'Festivities' are the happy events, celebrations, and activities organized for a special occasion.",
+        expAm: "«Festivities» (የበዓል ድምቀቶች / ክብረ በዓላት) ማለት በበዓል ጊዜ የሚደረጉ እንደ ዘፈን፣ ጭፈራና ግብዣ ያሉ የደስታ ሥነ ሥርዓቶች ናቸው።"
+      },
+      {
+        id: 19, unit: 1, unitName: "Unit 1: Holidays", type: "Context Fill-in",
+        stem: "Christmas, Epiphany, and Eid al-Fitr are examples of ______ holidays.",
+        options: ["tiresome", "nationwide", "invading", "religious"],
+        answer: 3,
+        expEn: "'Religious' holidays are special days connected to a faith or religion, such as Christianity or Islam.",
+        expAm: "«Religious» (ሃይማኖታዊ) ማለት እንደ ገና፣ ጥምቀት እና ኢድ አል-ፈጥር ያሉ ከእምነት ጋር የተያያዙ በዓላት ናቸው።"
+      },
+      {
+        id: 20, unit: 1, unitName: "Unit 1: Holidays", type: "Context Fill-in",
+        stem: "Carrying heavy market goods all day on the holiday eve is very ______.",
+        options: ["ceremonial", "tiresome", "plentiful", "traditional"],
+        answer: 1,
+        expEn: "'Tiresome' describes something that causes you to feel physically tired or exhausted.",
+        expAm: "«Tiresome» (አድካሚ) ማለት ከባድ ሥራ በመሥራት ምክንያት ከፍተኛ ድካም የሚፈጥር ማለት ነው።"
+      },
+
+      // ==================== PART II: UNIT 2 – DRY SEASON (21–40) ====================
+      {
+        id: 21, unit: 2, unitName: "Unit 2: Dry Season", type: "Context Fill-in",
+        stem: "Farmers use ______ to supply water to their crops during the dry season.",
+        options: ["drought", "irrigation", "reliance", "precipitation"],
+        answer: 1,
+        expEn: "'Irrigation' is the practice of artificially supplying water to farmland to help crops grow when there is little rain.",
+        expAm: "«Irrigation» (መስኖ) ማለት ዝናብ በማይኖርበት በበጋ ወቅት ለሰብሎች ውኃ የማጠጣት ዘዴ ነው።"
+      },
+      {
+        id: 22, unit: 2, unitName: "Unit 2: Dry Season", type: "Context Fill-in",
+        stem: "In the Afar Region, farmers ______ crops like cotton, maize, sesame, and sugarcane.",
+        options: ["cultivate", "consume", "hibernate", "crackle"],
+        answer: 0,
+        expEn: "'Cultivate' means to prepare land and grow crops on it.",
+        expAm: "«Cultivate» (ማልማት / ማረስና መዝራት) ማለት መሬትን አዘጋጅቶ የተለያዩ ሰብሎችን ማብቀል ማለት ነው።"
+      },
+      {
+        id: 23, unit: 2, unitName: "Unit 2: Dry Season", type: "Context Fill-in",
+        stem: "If we ______ our water resources well, we can produce more food all year.",
+        options: ["snuggle", "parch", "utilize", "freeze"],
+        answer: 2,
+        expEn: "'Utilize' means to make practical and effective use of a resource.",
+        expAm: "«Utilize» (በአግባቡ መጠቀም) ማለት ያለንን የተፈጥሮ ሀብት (እንደ ውኃ) ውጤታማ በሆነ መንገድ ጥቅም ላይ ማዋል ነው።"
+      },
+      {
+        id: 24, unit: 2, unitName: "Unit 2: Dry Season", type: "Context Fill-in",
+        stem: "Too much ______ on food aid from other countries is an obstacle to development.",
+        options: ["irrigation", "investment", "moisture", "reliance"],
+        answer: 3,
+        expEn: "'Reliance' means dependence on or trust in someone or something for support.",
+        expAm: "«Reliance» (ጥገኝነት / መተማመን) ማለት በሌሎች ሀገራት እርዳታ ላይ ብቻ መደገፍ ማለት ነው።"
+      },
+      {
+        id: 25, unit: 2, unitName: "Unit 2: Dry Season", type: "Context Fill-in",
+        stem: "Most of the wheat that people ______ in the country can be grown locally.",
+        options: ["consume", "cultivate", "clutch", "hibernate"],
+        answer: 0,
+        expEn: "'Consume' means to eat, drink, or use up food or goods.",
+        expAm: "«Consume» (መመገብ / መጠቀም) ማለት ምግብን (ለምሳሌ ስንዴን) መብላት ወይም ለፍጆታ መጠቀም ነው።"
+      },
+      {
+        id: 26, unit: 2, unitName: "Unit 2: Dry Season", type: "Context Fill-in",
+        stem: "Increasing government ______ in dry season farming helps ensure food security.",
+        options: ["drought", "investment", "reliance", "humidity"],
+        answer: 1,
+        expEn: "'Investment' is putting money, time, or resources into a project to achieve future benefits.",
+        expAm: "«Investment» (ኢንቨስትመንት / መዋዕለ ንዋይ ማፍሰስ) ማለት የወደፊት ጥቅምና ምርታማነትን ለማሳደግ ገንዘብና ሀብት ማዋል ነው።"
+      },
+      {
+        id: 27, unit: 2, unitName: "Unit 2: Dry Season", type: "Word Meaning Match",
+        stem: "An ______ region is a place that has a very dry climate and little rainfall.",
+        options: ["humid", "overcast", "arid", "misty"],
+        answer: 2,
+        expEn: "'Arid' means extremely dry, with very little rain to support plants or farming.",
+        expAm: "«Arid» (በጣም ደረቅ / ቆላማ) ማለት እጅግ በጣም አነስተኛ ዝናብ ያለው ደረቅ አካባቢ ማለት ነው።"
+      },
+      {
+        id: 28, unit: 2, unitName: "Unit 2: Dry Season", type: "Word Meaning Match",
+        stem: "Steppe regions are ______, which means they are partly dry with slight rainfall.",
+        options: ["scorching", "semi-arid", "freezing", "desiccated"],
+        answer: 1,
+        expEn: "'Semi-arid' describes regions that are partly dry and receive slightly more rainfall than deserts.",
+        expAm: "«Semi-arid» (ከፊል ደረቅ) ማለት ከበረሃ በመጠኑ የተሻለ ዝናብ የሚያገኝ ከፊል ደረቅ የአየር ንብረት ነው።"
+      },
+      {
+        id: 29, unit: 2, unitName: "Unit 2: Dry Season", type: "Word Meaning Match",
+        stem: "The ______ desert sun makes the afternoon heat unbearable. 'Scorching' means ______.",
+        options: ["very hot", "partly dry", "very cold", "lightly wet"],
+        answer: 0,
+        expEn: "'Scorching' means extremely or intensely hot, like the afternoon sun in a desert.",
+        expAm: "«Scorching» (አቃጣይ / እጅግ ሞቃት) ማለት በጣም የሚያቃጥል ኃይለኛ ሙቀት (very hot) ማለት ነው።"
+      },
+      {
+        id: 30, unit: 2, unitName: "Unit 2: Dry Season", type: "Context Fill-in",
+        stem: "Without rain for months, the earth becomes ______ by the sun.",
+        options: ["cloudy", "snowy", "foggy", "parched"],
+        answer: 3,
+        expEn: "'Parched' means hot and completely dried out from lack of rain or water.",
+        expAm: "«Parched» (የተሰነጣጠቀ / በፀሐይ የደረቀ) ማለት በዝናብ እጦት ምክንያት በፀሐይ የተቃጠለና የደረቀ መሬት ነው።"
+      },
+      {
+        id: 31, unit: 2, unitName: "Unit 2: Dry Season", type: "Word Meaning Match",
+        stem: "Which word from the dry season vocabulary means 'completely dried'?",
+        options: ["desiccated", "humid", "chilly", "drizzly"],
+        answer: 0,
+        expEn: "'Desiccated' means having all moisture removed—completely dried out.",
+        expAm: "«Desiccated» ማለት ሙሉ በሙሉ እርጥበቱ የጠፋና የደረቀ (completely dried) ማለት ነው።"
+      },
+      {
+        id: 32, unit: 2, unitName: "Unit 2: Dry Season", type: "Word Meaning Match",
+        stem: "A long period of continuous dry weather with no rain is called a ______.",
+        options: ["quilt", "drought", "breeze", "shower"],
+        answer: 1,
+        expEn: "A 'drought' is a long, continuous dry spell with little or no rainfall, causing water shortages.",
+        expAm: "«Drought» (ድርቅ) ማለት ለረጅም ጊዜ ዝናብ ሳይዘንብ ሲቀር የሚከሰት ተከታታይ ደረቅ ወቅት ነው።"
+      },
+      {
+        id: 33, unit: 2, unitName: "Unit 2: Dry Season", type: "Word Meaning Match",
+        stem: "A ______ is a large area of land that receives little or no rain.",
+        options: ["highland", "tropic", "desert", "hemisphere"],
+        answer: 2,
+        expEn: "A 'desert' is a vast, arid region with extremely low annual rainfall and sparse vegetation.",
+        expAm: "«Desert» (በረሃ) ማለት በጣም ትንሽ ዝናብ የሚያገኝ ወይም ምንም ዝናብ የማያገኝ ሰፊ ደረቅ መሬት ነው።"
+      },
+      {
+        id: 34, unit: 2, unitName: "Unit 2: Dry Season", type: "Word Meaning Match",
+        stem: "Rain, snow, and hail falling from the sky to the ground are forms of ______.",
+        options: ["investment", "irrigation", "evaporation", "precipitation"],
+        answer: 3,
+        expEn: "'Precipitation' is any form of water—such as rain, snow, or hail—that falls from clouds to the Earth.",
+        expAm: "«Precipitation» (ዝናብ / በረዶ መውረድ) ማለት ከሰማይ ወደ ምድር የሚወርድ ዝናብ፣ በረዶ ወይም ቀዝቃዛ ጠብታ ነው።"
+      },
+      {
+        id: 35, unit: 2, unitName: "Unit 2: Dry Season", type: "Context Fill-in",
+        stem: "In the winter poem, the sleepy narrator wishes to ______, or sleep all winter.",
+        options: ["hibernate", "cultivate", "consume", "utilize"],
+        answer: 0,
+        expEn: "'Hibernate' means to spend the cold winter season in a deep, restful sleep, like bears do.",
+        expAm: "«Hibernate» ማለት ቀዝቃዛውን የክረምት/የበረዶ ወቅት ሙሉ በሙሉ በረጅም እንቅልፍ ማሳለፍ ማለት ነው።"
+      },
+      {
+        id: 36, unit: 2, unitName: "Unit 2: Dry Season", type: "Context Fill-in",
+        stem: "She stayed warm with a hot water bottle ______ tightly to her side.",
+        options: ["parched", "clutched", "sown", "weeded"],
+        answer: 1,
+        expEn: "'Clutched' means held or grasped very tightly in one's hands or against one's body.",
+        expAm: "«Clutched» (አጥብቆ መያዝ) ማለት አንድን ነገር (እንደ ሙቅ ውኃ ጠርሙስ) በጥብቅ ጨብጦ ወይም ታቅፎ መያዝ ነው።"
+      },
+      {
+        id: 37, unit: 2, unitName: "Unit 2: Dry Season", type: "Antonym Match",
+        stem: "Which word is the antonym (opposite) of 'dry'?",
+        options: ["arid", "parched", "humid", "scorching"],
+        answer: 2,
+        expEn: "'Humid' means containing a high amount of moisture in the air, which is the opposite of 'dry'.",
+        expAm: "የ«Dry» (ደረቅ) ተቃራኒ ቃል «Humid» (እርጥበት አዘል) ነው።"
+      },
+      {
+        id: 38, unit: 2, unitName: "Unit 2: Dry Season", type: "Antonym Match",
+        stem: "Which word is the antonym (opposite) of 'warm'?",
+        options: ["cool", "hot", "boiling", "sunny"],
+        answer: 0,
+        expEn: "'Cool' means moderately cold or refreshing, making it the direct antonym of 'warm'.",
+        expAm: "የ«Warm» (ሞቅ ያለ) ተቃራኒ ቃል «Cool» (ቀዝቀዝ ያለ / ነፋሻማ) ነው።"
+      },
+      {
+        id: 39, unit: 2, unitName: "Unit 2: Dry Season", type: "Synonym Match",
+        stem: "Which word is a synonym (similar in meaning) for 'foggy'?",
+        options: ["clear", "gusty", "arid", "misty"],
+        answer: 3,
+        expEn: "'Misty' and 'foggy' both describe weather filled with tiny water droplets in the air that reduce visibility.",
+        expAm: "«Foggy» (ጭጋጋማ) እና «Misty» (ጉም የበዛበት) ተመሳሳይ ትርጉም ያላቸው ቃላት ናቸው።"
+      },
+      {
+        id: 40, unit: 2, unitName: "Unit 2: Dry Season", type: "Compound Noun Match",
+        stem: "Which of the following is a weather-related compound noun formed with 'rain'?",
+        options: ["rainy", "rainfall", "raining", "rained"],
+        answer: 1,
+        expEn: "'Rainfall' is a compound noun formed by joining two words: 'rain' + 'fall'. The others are an adjective or verb forms.",
+        expAm: "«Rainfall» (የዝናብ መጠን) «rain» እና «fall» የተባሉ ሁለት ቃላት ተጣምረው የተሠራ ጥምር ስም (compound noun) ነው።"
+      },
+
+      // ==================== PART III: UNIT 3 – ACCIDENTS (41–60) ====================
+      {
+        id: 41, unit: 3, unitName: "Unit 3: Accidents", type: "Word Meaning Match",
+        stem: "People who walk along or across roads are called ______.",
+        options: ["drivers", "passengers", "pedestrians", "victims"],
+        answer: 2,
+        expEn: "'Pedestrians' are people travelling on foot along streets or crossing roads.",
+        expAm: "«Pedestrians» (እግረኞች) ማለት በመንገድ ዳር ወይም መንገድ ላይ በእግራቸው የሚጓዙ ሰዎች ናቸው።"
+      },
+      {
+        id: 42, unit: 3, unitName: "Unit 3: Accidents", type: "Context Fill-in",
+        stem: "She was slightly ______ in a road accident and taken to the clinic.",
+        options: ["injured", "interlinked", "enforced", "crowded"],
+        answer: 0,
+        expEn: "'Injured' means physically hurt, wounded, or harmed in an accident.",
+        expAm: "«Injured» (የተጎዳ / የቆሰለ) ማለት በአደጋ ምክንያት በአካሉ ላይ ጉዳት የደረሰበት ሰው ማለት ነው።"
+      },
+      {
+        id: 43, unit: 3, unitName: "Unit 3: Accidents", type: "Word Meaning Match",
+        stem: "Roads in a good network are ______, meaning they are properly connected.",
+        options: ["detached", "interlinked", "diverted", "woven"],
+        answer: 1,
+        expEn: "'Interlinked' means joined or connected closely together, like roads in a well-planned network.",
+        expAm: "«Interlinked» (የተሳሰሩ / የተገናኙ) ማለት አንዱ መንገድ ከሌላው ጋር በሚገባ የተገናኘ ማለት ነው።"
+      },
+      {
+        id: 44, unit: 3, unitName: "Unit 3: Accidents", type: "Context Fill-in",
+        stem: "Two speeding cars coming from opposite sides had a head-to-head ______.",
+        options: ["congestion", "confusion", "conclusion", "collision"],
+        answer: 3,
+        expEn: "A 'collision' is a violent crash in which two moving vehicles or objects hit each other.",
+        expAm: "«Collision» (ግጭት) ማለት ሁለት ተሽከርካሪዎች በኃይል እርስ በርስ ሲጋጩ የሚፈጠር አደጋ ነው።"
+      },
+      {
+        id: 45, unit: 3, unitName: "Unit 3: Accidents", type: "Word Meaning Match",
+        stem: "In the passage on traffic accidents, the word 'vehicles' refers to ______.",
+        options: ["cars and buses", "zebra crossings", "road networks", "hind mirrors"],
+        answer: 0,
+        expEn: "'Vehicles' are motorized machines used to transport people or goods, such as cars, buses, and trucks.",
+        expAm: "«Vehicles» (ተሽከርካሪዎች) ማለት ሰዎችንና ዕቃዎችን የሚያጓጉዙ እንደ መኪና፣ አውቶቡስና የጭነት መኪና ያሉ ናቸው።"
+      },
+      {
+        id: 46, unit: 3, unitName: "Unit 3: Accidents", type: "Word Meaning Match",
+        stem: "Falling from a high place can cause bone ______, which are broken bones.",
+        options: ["slips", "choking", "fractures", "poisoning"],
+        answer: 2,
+        expEn: "'Fractures' are cracks or breaks in a bone, often caused by falling or heavy impact.",
+        expAm: "«Fractures» (የአጥንት ስብራት) ማለት ከፍ ካለ ቦታ በመውደቅ ወይም በግጭት የሚከሰት የአጥንት መሰበር ነው።"
+      },
+      {
+        id: 47, unit: 3, unitName: "Unit 3: Accidents", type: "Context Fill-in",
+        stem: "Leaving sharp knives and loose plugs near children is very ______.",
+        options: ["safe", "harmful", "alert", "helpful"],
+        answer: 1,
+        expEn: "'Harmful' means capable of causing injury, pain, or danger.",
+        expAm: "«Harmful» (ጎጂ / አደገኛ) ማለት በልጆች ወይም በሰዎች ላይ ጉዳት ሊያደርስ የሚችል ነገር ማለት ነው።"
+      },
+      {
+        id: 48, unit: 3, unitName: "Unit 3: Accidents", type: "Context Fill-in",
+        stem: "Small children risk ______ if they swallow tiny objects that block their throat.",
+        options: ["choking", "drowning", "slipping", "burning"],
+        answer: 0,
+        expEn: "'Choking' happens when food or a small object blocks the airway in the throat, making breathing difficult.",
+        expAm: "«Choking» (መታነቅ / ትንታ) ማለት ትናንሽ ዕቃዎች ወይም ምግብ ጉሮሮ ውስጥ ገብተው መተንፈስ ሲከለክሉ የሚከሰት አደጋ ነው።"
+      },
+      {
+        id: 49, unit: 3, unitName: "Unit 3: Accidents", type: "Context Fill-in",
+        stem: "Keeping medicines out of children's reach helps prevent accidental ______.",
+        options: ["fractures", "collision", "congestion", "poisoning"],
+        answer: 3,
+        expEn: "'Poisoning' occurs when a person swallows or inhales a harmful substance, such as medicine taken by mistake.",
+        expAm: "«Poisoning» (መመረዝ) ማለት መድኃኒቶችን ወይም ኬሚካሎችን በስህተት በመዋጥ የሚደርስ የጤና አደጋ ነው።"
+      },
+      {
+        id: 50, unit: 3, unitName: "Unit 3: Accidents", type: "Context Fill-in",
+        stem: "Old cars breaking down on narrow roads often cause a heavy ______.",
+        options: ["first aid", "zebra crossing", "traffic jam", "safety belt"],
+        answer: 2,
+        expEn: "A 'traffic jam' is a long line of vehicles unable to move or moving very slowly due to road congestion.",
+        expAm: "«Traffic jam» (የትራፊክ መጨናነቅ) ማለት መኪኖች በመንገድ ላይ ቆመው መንቀሳቀስ ሲያቅታቸው የሚፈጠር መጨናነቅ ነው።"
+      },
+      {
+        id: 51, unit: 3, unitName: "Unit 3: Accidents", type: "Context Fill-in",
+        stem: "Pedestrians should always use a ______ when crossing a busy street.",
+        options: ["hind mirror", "zebra crossing", "fire brigade", "road network"],
+        answer: 1,
+        expEn: "A 'zebra crossing' is a painted area with white stripes on a road where pedestrians can cross safely.",
+        expAm: "«Zebra crossing» (የእግረኛ ማቋረጫ / ዜብራ) ማለት እግረኞች መንገድን በደኅንነት እንዲያቋርጡ በነጭ መስመር የተቀባ ቦታ ነው።"
+      },
+      {
+        id: 52, unit: 3, unitName: "Unit 3: Accidents", type: "Word Meaning Match",
+        stem: "Accidents usually happen ______, meaning nobody planned for them to occur.",
+        options: ["unintentionally", "strictly", "frequently", "carefully"],
+        answer: 0,
+        expEn: "'Unintentionally' means not done on purpose or without planning.",
+        expAm: "«Unintentionally» (ሳይታሰብ / ባልታቀደ ሁኔታ) ማለት ማንም ሆን ብሎ ሳያቅደው በድንገት የሚከሰት ማለት ነው።"
+      },
+      {
+        id: 53, unit: 3, unitName: "Unit 3: Accidents", type: "Context Fill-in",
+        stem: "Firefighters worked quickly to ______ the flames burning the house.",
+        options: ["expand", "enforce", "construct", "extinguish"],
+        answer: 3,
+        expEn: "'Extinguish' means to put out a fire or stop flames from burning.",
+        expAm: "«Extinguish» (እሳት ማጥፋት) ማለት የሚነድን እሳት በውኃ ወይም በማጥፊያ መሣሪያ ማቆም ማለት ነው።"
+      },
+      {
+        id: 54, unit: 3, unitName: "Unit 3: Accidents", type: "Context Fill-in",
+        stem: "Beza is giving ______ to an injured person before the ambulance arrives.",
+        options: ["first aid", "traffic jam", "wildfire", "road safety"],
+        answer: 0,
+        expEn: "'First aid' is immediate, basic medical help given to an injured person before full medical care arrives.",
+        expAm: "«First aid» (የመጀመሪያ እርዳታ) ማለት ሐኪም ወይም አምቡላንስ ከመድረሱ በፊት ለተጎዳ ሰው የሚሰጥ ፈጣን ሕክምና ነው።"
+      },
+      {
+        id: 55, unit: 3, unitName: "Unit 3: Accidents", type: "Word Meaning Match",
+        stem: "A person who is hurt or suffers in an accident is called a ______.",
+        options: ["pedestrian", "driver", "victim", "collector"],
+        answer: 2,
+        expEn: "A 'victim' is someone who suffers injury, harm, or loss because of an accident or disaster.",
+        expAm: "«Victim» (ተጎጂ) ማለት በአደጋ ምክንያት ጉዳት ወይም ሥቃይ የደረሰበት ሰው ነው።"
+      },
+      {
+        id: 56, unit: 3, unitName: "Unit 3: Accidents", type: "Context Fill-in",
+        stem: "Honey hunters who forget to put out their fire can start a destructive ______.",
+        options: ["drought", "wildfire", "flood", "collision"],
+        answer: 1,
+        expEn: "A 'wildfire' is a large, uncontrolled fire that spreads rapidly through forests, grasslands, and crops.",
+        expAm: "«Wildfire» (የሰደድ እሳት) ማለት ጫካዎችን፣ ሰብሎችንና ቤቶችን በፍጥነት የሚያወድም ከቁጥጥር ውጭ የሆነ እሳት ነው።"
+      },
+      {
+        id: 57, unit: 3, unitName: "Unit 3: Accidents", type: "Word Meaning Match",
+        stem: "Cutting down too many trees in a forest is known as ______.",
+        options: ["starvation", "congestion", "dislocation", "deforestation"],
+        answer: 3,
+        expEn: "'Deforestation' is the clearing or cutting down of large areas of forest, which can lead to drought.",
+        expAm: "«Deforestation» (የደን መጨፍጨፍ) ማለት በደን ውስጥ ያሉ ዛፎችን በብዛት መቁረጥና ማውደም ነው።"
+      },
+      {
+        id: 58, unit: 3, unitName: "Unit 3: Accidents", type: "Context Fill-in",
+        stem: "Lack of rain and drought can lead to food shortage and ______.",
+        options: ["starvation", "investment", "celebration", "irrigation"],
+        answer: 0,
+        expEn: "'Starvation' is extreme suffering or death caused by a severe lack of food.",
+        expAm: "«Starvation» (ረሃብ) ማለት በምግብ እጥረት ምክንያት የሚከሰት ከባድ ጉዳትና ሥቃይ ነው።"
+      },
+      {
+        id: 59, unit: 3, unitName: "Unit 3: Accidents", type: "Context Fill-in",
+        stem: "To prevent accidents while playing or crossing a road, always stay ______.",
+        options: ["idle", "asleep", "alert", "crowded"],
+        answer: 2,
+        expEn: "'Alert' means watchful, attentive, and ready to notice danger quickly.",
+        expAm: "«Alert» (ንቁ / ጥንቁቅ) ማለት አደጋን ቀድሞ ለማየትና ለመከላከል ሁልጊዜ ንቁና ትኩረት ያለው መሆን ነው።"
+      },
+      {
+        id: 60, unit: 3, unitName: "Unit 3: Accidents", type: "Context Fill-in",
+        stem: "Drivers must avoid ______ speed to keep passengers and pedestrians safe.",
+        options: ["slow", "excessive", "careful", "safe"],
+        answer: 1,
+        expEn: "'Excessive' means more than what is normal, necessary, or safe—excessive speed is a major cause of crashes.",
+        expAm: "«Excessive» (ከመጠን ያለፈ) ማለት ከተፈቀደውና ከደኅንነት ገደብ በላይ የሆነ ፍጥነት ማለት ነው።"
+      }
+    ];
+
+    /*************************************************************************
+     * APPLICATION STATE & STORAGE
+     *************************************************************************/
+    const TEACHER_EMAIL = "mesayferedegn2@gmail.com";
+    const STORAGE_KEY = "yt_grade5_vocab_results_v1";
+
+    let studentInfo = { name: "", id: "", section: "" };
+    let currentIndex = 0;
+    let userAnswers = new Array(QUIZ_QUESTIONS.length).fill(null); // null = unanswered; 0..3 = locked choice
+    let quizSubmitted = false;
+    let lastCompletedRecord = null;
+    let confirmCallback = null;
+
+    // Narrator state
+    let selectedUKVoice = null;
+
+    /*************************************************************************
+     * BRITISH FEMALE NARRATOR (Web Speech API)
+     *************************************************************************/
+    function initBritishFemaleVoice() {
+      const statusEl = document.getElementById("narratorVoiceStatus");
+      if (!("speechSynthesis" in window)) {
+        statusEl.textContent = "Speech synthesis not supported in this browser.";
+        return;
+      }
+
+      const pickVoice = () => {
+        const voices = window.speechSynthesis.getVoices();
+        if (!voices || voices.length === 0) return;
+
+        // Priority 1: Known British English female voices
+        const preferredNames = [
+          "google uk english female",
+          "microsoft libby",
+          "microsoft sonia",
+          "microsoft hazel",
+          "microsoft susan",
+          "martha",
+          "serena",
+          "kate",
+          "stephanie",
+          "fiona",
+          "amy",
+          "emma"
+        ];
+
+        const gbVoices = voices.filter(v => (v.lang || "").toLowerCase().startsWith("en-gb"));
+        let match = gbVoices.find(v => preferredNames.some(n => v.name.toLowerCase().includes(n)));
+
+        // Priority 2: Any en-GB voice that isn't explicitly male
+        if (!match) {
+          match = gbVoices.find(v => !/male|daniel|george|ryan|arthur|oliver/i.test(v.name));
+        }
+        // Priority 3: Any en-GB voice
+        if (!match && gbVoices.length > 0) {
+          match = gbVoices[0];
+        }
+        // Priority 4: Any English female voice as graceful fallback
+        if (!match) {
+          match = voices.find(v => (v.lang || "").toLowerCase().startsWith("en") && /female|zira|samantha|victoria|susan|hazel/i.test(v.name));
+        }
+
+        selectedUKVoice = match || voices[0] || null;
+        if (selectedUKVoice) {
+          statusEl.textContent = `Active Voice: ${selectedUKVoice.name} (${selectedUKVoice.lang})`;
+        } else {
+          statusEl.textContent = "British English (en-GB) default narrator ready.";
+        }
+      };
+
+      pickVoice();
+      if (typeof window.speechSynthesis.onvoiceschanged !== "undefined") {
+        window.speechSynthesis.onvoiceschanged = pickVoice;
+      }
+    }
+
+    function speakText(text) {
+      if (!("speechSynthesis" in window)) {
+        showToast("Audio narrator is not supported in this browser.", "error");
+        return;
+      }
+      try {
+        window.speechSynthesis.cancel();
+        const utter = new SpeechSynthesisUtterance(text);
+        utter.lang = "en-GB";
+        if (selectedUKVoice) {
+          utter.voice = selectedUKVoice;
+          utter.lang = selectedUKVoice.lang || "en-GB";
+        }
+        // Gentle British female vocal clarity
+        utter.rate = 0.94;
+        utter.pitch = 1.08;
+
+        const pulse = document.getElementById("narratorPulse");
+        utter.onstart = () => pulse && pulse.classList.add("animate-pulse", "ring-4", "ring-indigo-300");
+        utter.onend = () => pulse && pulse.classList.remove("animate-pulse", "ring-4", "ring-indigo-300");
+        utter.onerror = () => pulse && pulse.classList.remove("animate-pulse", "ring-4", "ring-indigo-300");
+
+        window.speechSynthesis.speak(utter);
+      } catch (err) {
+        showToast("Unable to start voice narration.", "error");
+      }
+    }
+
+    function stopNarration() {
+      if ("speechSynthesis" in window) {
+        window.speechSynthesis.cancel();
+      }
+      const pulse = document.getElementById("narratorPulse");
+      if (pulse) pulse.classList.remove("animate-pulse", "ring-4", "ring-indigo-300");
+    }
+
+    function narrateCurrentQuestion() {
+      const q = QUIZ_QUESTIONS[currentIndex];
+      const cleanStem = q.stem.replace(/_{2,}/g, "blank");
+      const letters = ["A", "B", "C", "D"];
+      const optsText = q.options.map((opt, i) => `Option ${letters[i]}: ${opt}`).join(". ");
+      speakText(`Question ${q.id}. ${cleanStem}. ${optsText}.`);
+    }
+
+    function narrateCurrentExplanation() {
+      const q = QUIZ_QUESTIONS[currentIndex];
+      const letters = ["A", "B", "C", "D"];
+      speakText(`The correct answer is Option ${letters[q.answer]}, ${q.options[q.answer]}. ${q.expEn}`);
+    }
+
+    /*************************************************************************
+     * VIEW SWITCHING & TOASTS
+     *************************************************************************/
+    function switchMainView(view) {
+      stopNarration();
+      const welcome = document.getElementById("welcomeScreen");
+      const quiz = document.getElementById("quizScreen");
+      const results = document.getElementById("resultsScreen");
+      const teacher = document.getElementById("teacherScreen");
+      const navQuiz = document.getElementById("navQuizBtn");
+      const navTeacher = document.getElementById("navTeacherBtn");
+
+      welcome.classList.add("hidden");
+      quiz.classList.add("hidden");
+      results.classList.add("hidden");
+      teacher.classList.add("hidden");
+
+      if (view === "teacher") {
+        teacher.classList.remove("hidden");
+        renderTeacherDashboard();
+        navTeacher.className = "px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-white text-indigo-900 shadow-sm transition flex items-center gap-1.5";
+        navQuiz.className = "px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-indigo-700/80 text-white border border-indigo-400/40 hover:bg-indigo-600 transition";
+      } else {
+        navQuiz.className = "px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-white text-indigo-900 shadow-sm hover:bg-blue-50 transition";
+        navTeacher.className = "px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-indigo-700/80 text-white border border-indigo-400/40 hover:bg-indigo-600 transition flex items-center gap-1.5";
+
+        if (quizSubmitted && lastCompletedRecord) {
+          results.classList.remove("hidden");
+        } else if (studentInfo.name && studentInfo.id) {
+          quiz.classList.remove("hidden");
+        } else {
+          welcome.classList.remove("hidden");
+        }
+      }
+    }
+
+    function showToast(message, type = "info") {
+      const container = document.getElementById("toastContainer");
+      const colors = {
+        info: "bg-slate-900 text-white",
+        success: "bg-emerald-600 text-white",
+        error: "bg-rose-600 text-white"
+      };
+      const el = document.createElement("div");
+      el.className = `${colors[type] || colors.info} px-4 py-3 rounded-2xl shadow-xl text-xs sm:text-sm font-semibold pointer-events-auto transition-all`;
+      el.textContent = message;
+      container.appendChild(el);
+      setTimeout(() => {
+        el.classList.add("opacity-0", "translate-y-2");
+        setTimeout(() => el.remove(), 300);
+      }, 3000);
+    }
+
+    /*************************************************************************
+     * QUIZ LIFECYCLE
+     *************************************************************************/
+    function handleStartQuiz(e) {
+      e.preventDefault();
+      const nameInput = document.getElementById("studentName").value.trim();
+      const idInput = document.getElementById("studentId").value.trim();
+      const sectionInput = document.getElementById("studentSection").value.trim();
+      const errBox = document.getElementById("formErrorBox");
+
+      if (!nameInput || !idInput) {
+        errBox.textContent = "Please enter both your Full Name and ID Number to start the quiz.";
+        errBox.classList.remove("hidden");
+        return;
+      }
+
+      errBox.classList.add("hidden");
+      studentInfo = { name: nameInput, id: idInput, section: sectionInput || "Grade 5" };
+      currentIndex = 0;
+      userAnswers = new Array(QUIZ_QUESTIONS.length).fill(null);
+      quizSubmitted = false;
+      lastCompletedRecord = null;
+
+      // Update header strip
+      document.getElementById("displayStudentName").textContent = studentInfo.name;
+      document.getElementById("displayStudentId").textContent = `${studentInfo.id} (${studentInfo.section})`;
+      const initials = nameInput.split(/\s+/).map(w => w[0]).join("").toUpperCase().slice(0, 2) || "ST";
+      document.getElementById("studentInitials").textContent = initials;
+
+      switchMainView("quiz");
+      renderQuestion();
+      showToast(`Welcome, ${studentInfo.name}! Good luck!`, "success");
+    }
+
+    function renderQuestion() {
+      stopNarration();
+      const q = QUIZ_QUESTIONS[currentIndex];
+      const chosen = userAnswers[currentIndex];
+      const isLocked = chosen !== null;
+      const letters = ["A", "B", "C", "D"];
+
+      // Badges & counters
+      document.getElementById("unitBadge").textContent = q.unitName;
+      document.getElementById("typeBadge").textContent = q.type;
+      document.getElementById("currentQNum").textContent = q.id;
+      document.getElementById("questionStem").textContent = `${q.id}. ${q.stem}`;
+
+      // Update live stats
+      const answeredTotal = userAnswers.filter(a => a !== null).length;
+      const correctTotal = userAnswers.reduce((acc, a, idx) => acc + (a === QUIZ_QUESTIONS[idx].answer ? 1 : 0), 0);
+      document.getElementById("answeredCount").textContent = answeredTotal;
+      document.getElementById("liveScore").textContent = correctTotal;
+      document.getElementById("progressBar").style.width = `${((currentIndex + 1) / QUIZ_QUESTIONS.length) * 100}%`;
+
+      // Render clickable option buttons
+      const grid = document.getElementById("optionsGrid");
+      grid.innerHTML = "";
+
+      q.options.forEach((optText, idx) => {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.disabled = isLocked;
+
+        let styleClasses = "bg-white hover:bg-indigo-50/70 border-slate-200 hover:border-indigo-400 text-slate-800 cursor-pointer";
+        let badgeClasses = "bg-slate-100 text-slate-700";
+        let statusIcon = "";
+
+        if (isLocked) {
+          if (idx === q.answer) {
+            styleClasses = "bg-emerald-50 border-emerald-500 text-emerald-950 ring-2 ring-emerald-200 cursor-default";
+            badgeClasses = "bg-emerald-600 text-white";
+            statusIcon = `<span class="ml-auto text-emerald-600 font-extrabold text-sm">✓ Correct</span>`;
+          } else if (idx === chosen && chosen !== q.answer) {
+            styleClasses = "bg-rose-50 border-rose-500 text-rose-950 ring-2 ring-rose-200 cursor-default";
+            badgeClasses = "bg-rose-600 text-white";
+            statusIcon = `<span class="ml-auto text-rose-600 font-extrabold text-sm">✕ Your Choice</span>`;
+          } else {
+            styleClasses = "bg-slate-50 border-slate-200 text-slate-400 opacity-70 cursor-default";
+            badgeClasses = "bg-slate-200 text-slate-500";
+          }
+        }
+
+        btn.className = `w-full text-left p-4 rounded-2xl border-2 transition-all duration-150 flex items-center gap-3 shadow-sm ${styleClasses}`;
+        btn.innerHTML = `
+          <span class="w-9 h-9 rounded-xl font-extrabold text-sm flex items-center justify-center shrink-0 ${badgeClasses}">${letters[idx]}</span>
+          <span class="font-semibold text-sm sm:text-base leading-snug">${optText}</span>
+          ${statusIcon}
+        `;
+
+        if (!isLocked) {
+          btn.onclick = () => selectAnswer(idx);
+        }
+        grid.appendChild(btn);
+      });
+
+      // Instant Feedback & Bilingual Explanation
+      const fbPanel = document.getElementById("feedbackPanel");
+      const fbStatus = document.getElementById("feedbackStatus");
+      const readExpBtn = document.getElementById("readExpBtn");
+
+      if (isLocked) {
+        fbPanel.classList.remove("hidden");
+        readExpBtn.classList.remove("hidden");
+        const isCorrect = chosen === q.answer;
+        if (isCorrect) {
+          fbPanel.className = "rounded-2xl border-2 border-emerald-300 bg-emerald-50/80 p-4 sm:p-5 space-y-3";
+          fbStatus.className = "text-sm sm:text-base font-extrabold text-emerald-800 flex items-center gap-2";
+          fbStatus.innerHTML = `<span>✓ Excellent! Option ${letters[q.answer]} (${q.options[q.answer]}) is correct.</span>`;
+        } else {
+          fbPanel.className = "rounded-2xl border-2 border-rose-300 bg-rose-50/80 p-4 sm:p-5 space-y-3";
+          fbStatus.className = "text-sm sm:text-base font-extrabold text-rose-800 flex items-center gap-2";
+          fbStatus.innerHTML = `<span>✕ Incorrect. You chose ${letters[chosen]}. The correct answer is Option ${letters[q.answer]} (${q.options[q.answer]}).</span>`;
+        }
+        document.getElementById("explanationEn").textContent = q.expEn;
+        document.getElementById("explanationAm").textContent = q.expAm;
+      } else {
+        fbPanel.classList.add("hidden");
+        readExpBtn.classList.add("hidden");
+      }
+
+      // Navigation button states
+      document.getElementById("backBtn").disabled = currentIndex === 0;
+      const nextSkipBtn = document.getElementById("nextSkipBtn");
+      const nextSkipLabel = document.getElementById("nextSkipLabel");
+      if (currentIndex === QUIZ_QUESTIONS.length - 1) {
+        nextSkipBtn.classList.add("hidden");
+      } else {
+        nextSkipBtn.classList.remove("hidden");
+        nextSkipLabel.textContent = isLocked ? "Next Question" : "Jump Next / Skip";
+      }
+
+      // Auto-read if toggled on
+      if (document.getElementById("autoReadToggle").checked && !isLocked) {
+        narrateCurrentQuestion();
+      }
+    }
+
+    function selectAnswer(optionIdx) {
+      // Irreversible lock: ignore if already answered
+      if (userAnswers[currentIndex] !== null) return;
+      userAnswers[currentIndex] = optionIdx;
+      renderQuestion();
+    }
+
+    function prevQuestion() {
+      if (currentIndex > 0) {
+        currentIndex--;
+        renderQuestion();
+      }
+    }
+
+    function nextOrSkipQuestion() {
+      if (currentIndex < QUIZ_QUESTIONS.length - 1) {
+        currentIndex++;
+        renderQuestion();
+      }
+    }
+
+    function jumpToQuestion(idx) {
+      currentIndex = idx;
+      toggleNavigatorModal(false);
+      renderQuestion();
+    }
+
+    function toggleNavigatorModal(show) {
+      const modal = document.getElementById("navigatorModal");
+      if (!show) {
+        modal.classList.add("hidden");
+        return;
+      }
+      const grid = document.getElementById("navigatorGrid");
+      grid.innerHTML = "";
+      QUIZ_QUESTIONS.forEach((q, idx) => {
+        const ans = userAnswers[idx];
+        let cls = "bg-white border-slate-300 text-slate-700 hover:bg-indigo-50";
+        if (ans !== null) {
+          cls = ans === q.answer
+            ? "bg-emerald-500 border-emerald-600 text-white"
+            : "bg-rose-500 border-rose-600 text-white";
+        }
+        if (idx === currentIndex) {
+          cls += " ring-2 ring-indigo-500 ring-offset-1";
+        }
+        const b = document.createElement("button");
+        b.type = "button";
+        b.className = `h-10 rounded-xl border font-bold text-xs transition ${cls}`;
+        b.textContent = q.id;
+        b.onclick = () => jumpToQuestion(idx);
+        grid.appendChild(b);
+      });
+      modal.classList.remove("hidden");
+    }
+
+    /*************************************************************************
+     * SUBMISSION, AUTO-GRADING & EMAIL REPORT
+     *************************************************************************/
+    function openConfirmModal(title, message, onConfirm) {
+      document.getElementById("confirmModalTitle").textContent = title;
+      document.getElementById("confirmModalMessage").textContent = message;
+      confirmCallback = onConfirm;
+      document.getElementById("confirmModalOkBtn").onclick = () => {
+        closeConfirmModal();
+        if (typeof confirmCallback === "function") confirmCallback();
+      };
+      document.getElementById("confirmModal").classList.remove("hidden");
+    }
+
+    function closeConfirmModal() {
+      document.getElementById("confirmModal").classList.add("hidden");
+    }
+
+    function requestSubmitQuiz() {
+      const unanswered = userAnswers.filter(a => a === null).length;
+      if (unanswered > 0) {
+        openConfirmModal(
+          "Submit Quiz with Unanswered Questions?",
+          `You still have ${unanswered} unanswered/skipped question(s). Unanswered questions will be graded as 0. Are you sure you want to submit now?`,
+          finalizeSubmission
+        );
+      } else {
+        openConfirmModal(
+          "Submit Completed Quiz?",
+          "You have answered all 60 questions. Ready to auto-grade and view your final score?",
+          finalizeSubmission
+        );
+      }
+    }
+
+    function finalizeSubmission() {
+      stopNarration();
+      let u1 = 0, u2 = 0, u3 = 0;
+      QUIZ_QUESTIONS.forEach((q, idx) => {
+        if (userAnswers[idx] === q.answer) {
+          if (q.unit === 1) u1++;
+          else if (q.unit === 2) u2++;
+          else if (q.unit === 3) u3++;
+        }
+      });
+
+      const total = u1 + u2 + u3;
+      const pct = Math.round((total / QUIZ_QUESTIONS.length) * 100);
+      const now = new Date();
+      const timestamp = now.toLocaleString();
+
+      const record = {
+        id: Date.now(),
+        name: studentInfo.name,
+        studentId: studentInfo.id,
+        section: studentInfo.section,
+        unit1: u1,
+        unit2: u2,
+        unit3: u3,
+        total,
+        outOf: QUIZ_QUESTIONS.length,
+        percentage: pct,
+        timestamp,
+        answers: [...userAnswers]
+      };
+
+      // Save to localStorage for Teacher Dashboard
+      const records = loadTeacherRecords();
+      records.unshift(record);
+      saveTeacherRecords(records);
+      updateDashboardBadge();
+
+      quizSubmitted = true;
+      lastCompletedRecord = record;
+
+      renderResultsScreen(record);
+      switchMainView("quiz"); // shows resultsScreen because quizSubmitted is true
+      showToast("Quiz submitted and auto-graded!", "success");
+    }
+
+    function getGradeLabel(pct) {
+      if (pct >= 90) return "Excellent (A+)";
+      if (pct >= 80) return "Very Good (A)";
+      if (pct >= 70) return "Good (B)";
+      if (pct >= 50) return "Satisfactory (C)";
+      return "Needs Practice";
+    }
+
+    function buildEmailBody(record) {
+      return [
+        "YT TUTORIAL CENTER FOR KIDS - GRADE 5 ENGLISH VOCABULARY QUIZ RESULT",
+        "====================================================================",
+        `Student Full Name: ${record.name}`,
+        `Student ID Number: ${record.studentId}`,
+        `Grade / Section:   ${record.section}`,
+        `Submission Date:   ${record.timestamp}`,
+        "--------------------------------------------------------------------",
+        `Unit 1 (Holidays):   ${record.unit1} / 20`,
+        `Unit 2 (Dry Season): ${record.unit2} / 20`,
+        `Unit 3 (Accidents):  ${record.unit3} / 20`,
+        "--------------------------------------------------------------------",
+        `FINAL SCORE:         ${record.total} / ${record.outOf} (${record.percentage}%)`,
+        `PERFORMANCE GRADE:   ${getGradeLabel(record.percentage)}`,
+        "===================================================================="
+      ].join("\n");
+    }
+
+    function renderResultsScreen(record) {
+      document.getElementById("resStudentName").textContent = record.name;
+      document.getElementById("resStudentId").textContent = `${record.studentId} (${record.section})`;
+      document.getElementById("resTimestamp").textContent = record.timestamp;
+      document.getElementById("resTotalScore").textContent = `${record.total} / ${record.outOf}`;
+      document.getElementById("resPercentage").textContent = `${record.percentage}%`;
+      document.getElementById("resGradeLabel").textContent = getGradeLabel(record.percentage);
+
+      document.getElementById("resUnit1").textContent = `${record.unit1} / 20`;
+      document.getElementById("resUnit2").textContent = `${record.unit2} / 20`;
+      document.getElementById("resUnit3").textContent = `${record.unit3} / 20`;
+
+      // Configure mailto link to mesayferedegn2@gmail.com
+      const subject = encodeURIComponent(`Grade 5 Vocab Quiz Score - ${record.name} (${record.studentId}) - ${record.total}/60`);
+      const body = encodeURIComponent(buildEmailBody(record));
+      document.getElementById("emailScoreLink").href = `mailto:${TEACHER_EMAIL}?subject=${subject}&body=${body}`;
+
+      renderReviewList("all");
+    }
+
+    function renderReviewList(filter) {
+      if (!lastCompletedRecord) return;
+      const list = document.getElementById("reviewList");
+      list.innerHTML = "";
+      const letters = ["A", "B", "C", "D"];
+
+      QUIZ_QUESTIONS.forEach((q, idx) => {
+        const chosen = lastCompletedRecord.answers[idx];
+        const isCorrect = chosen === q.answer;
+        if (filter === "correct" && !isCorrect) return;
+        if (filter === "wrong" && isCorrect) return;
+
+        const card = document.createElement("div");
+        card.className = `rounded-2xl border p-4 space-y-2 ${isCorrect ? "bg-emerald-50/50 border-emerald-200" : "bg-rose-50/50 border-rose-200"}`;
+        const userLabel = chosen === null ? "Skipped (No Answer)" : `${letters[chosen]}. ${q.options[chosen]}`;
+
+        card.innerHTML = `
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <span class="text-xs font-bold uppercase text-slate-500">${q.unitName}</span>
+            <span class="px-2.5 py-0.5 rounded-full text-xs font-extrabold ${isCorrect ? "bg-emerald-600 text-white" : "bg-rose-600 text-white"}">
+              ${isCorrect ? "✓ Correct" : "✕ Incorrect"}
+            </span>
+          </div>
+          <p class="font-bold text-slate-900 text-sm sm:text-base">${q.id}. ${q.stem}</p>
+          <div class="text-xs sm:text-sm space-y-0.5">
+            <p><span class="font-semibold text-slate-600">Your Answer:</span> <span class="${isCorrect ? "text-emerald-700 font-bold" : "text-rose-700 font-bold"}">${userLabel}</span></p>
+            <p><span class="font-semibold text-slate-600">Correct Answer:</span> <span class="text-emerald-700 font-bold">${letters[q.answer]}. ${q.options[q.answer]}</span></p>
+          </div>
+          <div class="text-xs text-slate-700 bg-white/80 rounded-xl p-3 border border-slate-200/70 space-y-1">
+            <p><strong>EN:</strong> ${q.expEn}</p>
+            <p class="font-amharic"><strong>አማርኛ:</strong> ${q.expAm}</p>
+          </div>
+        `;
+        list.appendChild(card);
+      });
+
+      if (!list.children.length) {
+        list.innerHTML = `<div class="text-center py-8 text-sm text-slate-500 font-medium">No questions match this filter.</div>`;
+      }
+    }
+
+    function copyScoreReport() {
+      if (!lastCompletedRecord) return;
+      const text = buildEmailBody(lastCompletedRecord);
+      const ta = document.createElement("textarea");
+      ta.value = text;
+      ta.style.position = "fixed";
+      ta.style.opacity = "0";
+      document.body.appendChild(ta);
+      ta.select();
+      try {
+        document.execCommand("copy");
+        showToast("Score report copied! You can paste it into any email or message.", "success");
+      } catch (e) {
+        showToast("Could not copy report automatically.", "error");
+      }
+      document.body.removeChild(ta);
+    }
+
+    function resetForNewStudent() {
+      studentInfo = { name: "", id: "", section: "" };
+      userAnswers = new Array(QUIZ_QUESTIONS.length).fill(null);
+      quizSubmitted = false;
+      lastCompletedRecord = null;
+      document.getElementById("studentForm").reset();
+      switchMainView("quiz");
+    }
+
+    /*************************************************************************
+     * TEACHER RESULTS DASHBOARD (localStorage + CSV Export)
+     *************************************************************************/
+    function loadTeacherRecords() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        return raw ? JSON.parse(raw) : [];
+      } catch (e) {
+        return [];
+      }
+    }
+
+    function saveTeacherRecords(records) {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(records));
+      } catch (e) {
+        // Gracefully ignore storage quota errors
+      }
+    }
+
+    function updateDashboardBadge() {
+      const count = loadTeacherRecords().length;
+      document.getElementById("dashboardCountBadge").textContent = count;
+    }
+
+    function renderTeacherDashboard() {
+      const allRecords = loadTeacherRecords();
+      const query = (document.getElementById("dashboardSearch").value || "").trim().toLowerCase();
+      const filtered = allRecords.filter(r =>
+        r.name.toLowerCase().includes(query) ||
+        r.studentId.toLowerCase().includes(query)
+      );
+
+      // Update KPIs
+      document.getElementById("kpiTotalStudents").textContent = allRecords.length;
+      if (allRecords.length > 0) {
+        const avgPct = Math.round(allRecords.reduce((s, r) => s + r.percentage, 0) / allRecords.length);
+        const highest = Math.max(...allRecords.map(r => r.total));
+        const passCount = allRecords.filter(r => r.percentage >= 50).length;
+        const passRate = Math.round((passCount / allRecords.length) * 100);
+        document.getElementById("kpiAvgScore").textContent = `${avgPct}%`;
+        document.getElementById("kpiHighScore").textContent = `${highest} / 60`;
+        document.getElementById("kpiPassRate").textContent = `${passRate}%`;
+      } else {
+        document.getElementById("kpiAvgScore").textContent = "0%";
+        document.getElementById("kpiHighScore").textContent = "0 / 60";
+        document.getElementById("kpiPassRate").textContent = "0%";
+      }
+
+      // Render table
+      const tbody = document.getElementById("dashboardTableBody");
+      tbody.innerHTML = "";
+
+      if (filtered.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="9" class="py-10 text-center text-slate-500 text-sm">
+              No student submissions recorded yet. Completed quizzes will appear here automatically.
+            </td>
+          </tr>
+        `;
+        return;
+      }
+
+      filtered.forEach((rec, i) => {
+        const tr = document.createElement("tr");
+        tr.className = "hover:bg-slate-50 transition";
+        const subj = encodeURIComponent(`Grade 5 Vocab Quiz Score - ${rec.name} (${rec.studentId}) - ${rec.total}/60`);
+        const body = encodeURIComponent(buildEmailBody(rec));
+        const badgeColor = rec.percentage >= 50 ? "bg-emerald-100 text-emerald-800" : "bg-rose-100 text-rose-800";
+
+        tr.innerHTML = `
+          <td class="py-3 px-4 font-semibold text-slate-500">${i + 1}</td>
+          <td class="py-3 px-4 font-bold text-slate-900">${rec.name} <span class="text-xs font-normal text-slate-400">(${rec.section})</span></td>
+          <td class="py-3 px-4 font-mono text-xs text-slate-700">${rec.studentId}</td>
+          <td class="py-3 px-4 text-slate-700">${rec.unit1}/20</td>
+          <td class="py-3 px-4 text-slate-700">${rec.unit2}/20</td>
+          <td class="py-3 px-4 text-slate-700">${rec.unit3}/20</td>
+          <td class="py-3 px-4">
+            <span class="px-2.5 py-1 rounded-full text-xs font-extrabold ${badgeColor}">${rec.total}/60 (${rec.percentage}%)</span>
+          </td>
+          <td class="py-3 px-4 text-xs text-slate-500">${rec.timestamp}</td>
+          <td class="py-3 px-4 text-right">
+            <a href="mailto:${TEACHER_EMAIL}?subject=${subj}&body=${body}" class="inline-block px-3 py-1.5 rounded-xl bg-indigo-50 hover:bg-indigo-100 text-indigo-700 text-xs font-bold transition">
+              Email
+            </a>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function exportResultsCSV() {
+      const records = loadTeacherRecords();
+      if (records.length === 0) {
+        showToast("No records available to export.", "error");
+        return;
+      }
+      const headers = ["Full Name", "ID Number", "Section", "Unit 1 (/20)", "Unit 2 (/20)", "Unit 3 (/20)", "Total (/60)", "Percentage (%)", "Date/Time"];
+      const rows = records.map(r => [
+        `"${r.name.replace(/"/g, '""')}"`,
+        `"${r.studentId.replace(/"/g, '""')}"`,
+        `"${r.section.replace(/"/g, '""')}"`,
+        r.unit1, r.unit2, r.unit3, r.total, r.percentage,
+        `"${r.timestamp}"`
+      ].join(","));
+      const csv = [headers.join(","), ...rows].join("\n");
+      const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "YT_Grade5_Vocabulary_Quiz_Results.csv";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      showToast("CSV results file downloaded!", "success");
+    }
+
+    function requestClearDashboard() {
+      openConfirmModal(
+        "Clear All Teacher Dashboard Records?",
+        "This will permanently delete all stored student results from this browser. Continue?",
+        () => {
+          saveTeacherRecords([]);
+          updateDashboardBadge();
+          renderTeacherDashboard();
+          showToast("All dashboard records cleared.", "info");
+        }
+      );
+    }
+
+    /*************************************************************************
+     * INITIALIZATION
+     *************************************************************************/
+    window.addEventListener("DOMContentLoaded", () => {
+      initBritishFemaleVoice();
+      updateDashboardBadge();
+    });
+  </script>
+</body>
+</html>
